@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'boards#index'
   
-  resources :boards, only: [:index, :new, :create, :show]   # 個々にルートを作成したが、リソースベースルーティングで基本のルーティングを１行で済ませる。onlyで指定する。
+  resources :boards, only: [:index, :new, :create, :show, :edit, :update]   # 個々にルートを作成したが、リソースベースルーティングで基本のルーティングを１行で済ませる。onlyで指定する。
 
 
   #get 'boards', to: 'boards#index'   #GETメソッドで/boardsにリクエストが来た場合、indexメソッドが呼ばれる。
