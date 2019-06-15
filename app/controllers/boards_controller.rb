@@ -11,6 +11,10 @@ class BoardsController < ApplicationController
     Board.create(board_params) #保存
   end
 
+  def show
+    @board = Board.find(params[:id])  #findメソッドに引数にidを指定すると、そのidに準ずるBoardオブジェクトを取得
+  end 
+
   private  #プライベートメソッド
 
   def board_params
