@@ -11,5 +11,6 @@ module App
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.time_zone= 'Tokyo'  #時間を日本時間するにはconfig/applicationに追加。
   end
 end

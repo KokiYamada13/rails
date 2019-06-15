@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   #root 'boards#index'
   get 'boards', to: 'boards#index'   #GETメソッドで/boardsにリクエストが来た場合、indexメソッドが呼ばれる。
   get 'boards/new', to: 'boards#new'    #GETメソッドで/boards/newにリクエストが来た場合、newメソッドが呼ばれる。
+  post 'boards', to: 'boards#create'
 end
