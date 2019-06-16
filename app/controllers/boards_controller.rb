@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :set_target_board, only: %i[show edit update destroy]   #先に実行したいメソッドは beforre_action。対象を絞り込みたい場合はルートの書き方と同じようにonly
+
   def index
     @boards = Board.all #allは全て取得することになる。（開発時のみ。）
   end
@@ -12,24 +14,20 @@ class BoardsController < ApplicationController
     redirect_to board
   end
 
-  def show
-    @board = Board.find(params[:id])  #findメソッドに引数にidを指定すると、そのidに準ずるBoardオブジェクトを取得
+  def show  
   end 
 
-  def edit
-    @board = Board.find(params[:id]) #編集対象のID
+  def edit 
   end
 
-  def update
-    board = Board.find(params[:id]) #updateはローカル変数。viewを作成せず、インスタンス変数をviewに渡す必要がないため。
-    board.update(board_params)
+  def update #updateはローカル変数。viewを作成せず、インスタンス変数をviewに渡す必要がないため。
+    @board.update(board_params)
 
-    redirect_to board  #/boards/:id　のパスにリダイレクトされる。 redirect_to
+    redirect_to @board  #/boards/:id　のパスにリダイレクトされる。 redirect_to
   end
 
   def destroy
-    board = Board.find(params[:id])
-    board.delete
+    @board.delete
 
     redirect_to boards_path
   end
@@ -38,5 +36,9 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:name, :title, :body) #requireメソッドでモデル名のキーを取得し、permitメソッドでそのモデルのキーを許可する。
+  end
+
+  def set_target_board
+    @board = Board.find(params[:id]) #findメソッドに引数にidを指定すると、そのidに準ずるBoardオブジェクトを取得。
   end
 end
