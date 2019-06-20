@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
   before_action :set_target_board, only: %i[show edit update destroy]   #先に実行したいメソッドは beforre_action。対象を絞り込みたい場合はルートの書き方と同じようにonly
-
-  def index
-    @boards = Board.all #allは全て取得することになる。（開発時のみ。）
+  
+  def index　　#allは全て取得することになる。（開発時のみ。）
+    @boards = Board.page(params[:page])     #kaminaririによりpageメソッドが利用可。引数に指定したページに表示するデータを取得する。デフォルトは２５p             
   end
 
   def new
