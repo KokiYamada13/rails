@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap', '~> 4.0.0'  #bootstrapを使用する為、追加。→dockerでbuild
-gem 'mini_racer', '0.1.14'
+# gem 'mini_racer', '0.1.14'
+gem 'kaminari'   # '~> 0.17.0' #ページネーションに必要
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
