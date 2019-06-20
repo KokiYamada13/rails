@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   before_action :set_target_board, only: %i[show edit update destroy]   #先に実行したいメソッドは beforre_action。対象を絞り込みたい場合はルートの書き方と同じようにonly
 
-  def index
+  def index #allは全て取得することになる。（開発時のみ。）
     @boards = Board.page(params[:page]) #kaminaririによりpageメソッドが利用可。引数に指定したページに表示するデータを取得する。デフォルトは２５p
   end
 
@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
 
   def create
     board = Board.create(board_params) #保存
+    flash[:notice] = "「#{board.title}」の掲示板を作成しました"  #flash[:notice]でデータがsessionに保存され、一度参照したら削除される。
     redirect_to board
   end
 
@@ -29,7 +30,7 @@ class BoardsController < ApplicationController
   def destroy
     @board.delete
 
-    redirect_to boards_path
+    redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板が削除されました" }
   end
 
   private  #プライベートメソッド
