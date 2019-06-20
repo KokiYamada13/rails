@@ -1,12 +1,12 @@
 class BoardsController < ApplicationController
   before_action :set_target_board, only: %i[show edit update destroy]   #先に実行したいメソッドは beforre_action。対象を絞り込みたい場合はルートの書き方と同じようにonly
-  
-  def index　　#allは全て取得することになる。（開発時のみ。）
-    @boards = Board.page(params[:page])     #kaminaririによりpageメソッドが利用可。引数に指定したページに表示するデータを取得する。デフォルトは２５p             
+
+  def index
+    @boards = Board.page(params[:page]) #kaminaririによりpageメソッドが利用可。引数に指定したページに表示するデータを取得する。デフォルトは２５p
   end
 
   def new
-    @board = Board.new   
+    @board = Board.new
   end
 
   def create
@@ -14,10 +14,10 @@ class BoardsController < ApplicationController
     redirect_to board
   end
 
-  def show  
-  end 
+  def show
+  end
 
-  def edit 
+  def edit
   end
 
   def update #updateはローカル変数。viewを作成せず、インスタンス変数をviewに渡す必要がないため。
