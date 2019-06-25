@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0'  #bootstrapを使用する為、追加。→dockerでbuild
 gem 'mini_racer', '0.1.14'
 gem 'kaminari'   # '~> 0.17.0' #ページネーションに必要
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
