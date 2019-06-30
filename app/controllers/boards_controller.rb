@@ -27,17 +27,24 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    @board.attributes = flash[:board] if flash[:board]
   end
 
   def update #updateはローカル変数。viewを作成せず、インスタンス変数をviewに渡す必要がないため。
-    @board.update(board_params)
-
-    redirect_to @board  #/boards/:id　のパスにリダイレクトされる。 redirect_to
+    if @board.update(board_params)
+      redirect_to @board
+    else
+      redirect_to :back, flash: {
+        board: @board,
+        error_messages: @board.errors.full_messages
+      }
+    end
+    #@board.update(board_params)
+    #redirect_to @board  #/boards/:id　のパスにリダイレクトされる。 redirect_to
   end
 
   def destroy
     @board.delete
-
     redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板が削除されました" }
   end
 
