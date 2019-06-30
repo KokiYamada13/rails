@@ -51,7 +51,7 @@ class BoardsController < ApplicationController
   private  #プライベートメソッド
 
   def board_params
-    params.require(:board).permit(:name, :title, :body) #requireメソッドでモデル名のキーを取得し、permitメソッドでそのモデルのキーを許可する。
+    params.require(:board).permit(:name, :title, :body, tag_ids: []) #requireメソッドでモデル名のキーを取得し、permitメソッドでそのモデルのキーを許可する。
   end
 
   def set_target_board
