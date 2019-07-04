@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      session[:user_id] = user_id
+      session[:user_id] = user.id
       redirect_to mypage_path
     else
       redirect_to :back, flash: {
